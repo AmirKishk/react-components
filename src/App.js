@@ -1,30 +1,46 @@
 import Button from "./Button";
+import {
+  GoBellFill,
+  GoCodeReview,
+  GoCodeOfConduct,
+  GoEye,
+  GoHubot,
+} from "react-icons/go";
 
 function App() {
+  const handleClick = () => {
+    console.log("Clicked!");
+  };
+
   return (
     <div>
       <div>
-        <Button primary outline>
+        <Button primary outline className="mb-5" onClick={handleClick}>
+          <GoBellFill />
           Click Khalto!
         </Button>
       </div>
       <div>
         <Button secondary outline>
+          <GoCodeReview />
           BuyeNow!
         </Button>
       </div>
       <div>
         <Button success outline>
+          <GoCodeOfConduct />
           Haha!
         </Button>
       </div>
       <div>
         <Button warning outline>
+          <GoEye />
           Hoho!
         </Button>
       </div>
       <div>
         <Button danger outline>
+          <GoHubot />
           Hehe!
         </Button>
       </div>
