@@ -13,7 +13,7 @@ function ButtonPage() {
   return (
     <div>
       <div>
-        <Button primary outline className="mb-5" onClick={handleClick}>
+        <Button primary outline className="mb-0" onClick={handleClick}>
           <GoBellFill />
           Click Khalto!
         </Button>
