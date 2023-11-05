@@ -1,18 +1,22 @@
-function Table({ data, config }) {
-  const renderRows = data.map((fruit) => {
-    return (
-      <tr className="border-b" key={fruit.name}>
-        <td className="p-3">{fruit.name}</td>
-        <td className="p-3">
-          <div className={`p-3 m-2 ${fruit.color}`}></div>
-        </td>
-        <td className="p-3">{fruit.score}</td>
-      </tr>
-    );
-  });
-
+function Table({ data, config, keyFn }) {
   const renderHeaders = config.map((column) => {
     return <th key={column.label}>{column.label}</th>;
+  });
+
+  const renderRows = data.map((rowData) => {
+    const renderCells = config.map((column) => {
+      return (
+        <td className="p-3" key={column.label}>
+          {column.render(rowData)}
+        </td>
+      );
+    });
+
+    return (
+      <tr className="border-b" key={keyFn(rowData)}>
+        {renderCells}
+      </tr>
+    );
   });
 
   return (
@@ -26,3 +30,9 @@ function Table({ data, config }) {
 }
 
 export default Table;
+
+// {
+// <td className="p-3">{config[0].render(rowData)}</td>
+// <td className="p-3">{config[1].render(rowData)}</td>
+// <td className="p-3">{config[2].render(rowData)}</td>
+// }
